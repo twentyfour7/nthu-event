@@ -39,7 +39,7 @@ module NthuEvent
         date, link, title = parse_event_metadata(node)
         content = get_event_content(link)
 
-        { title: title, content: content, link: link, date: date }
+        { title: title, content: content, url: link, date: date }
       end
 
       # get total page

@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'nthu_event'
+
+event_type = ARGV[0] || 'admin'
+# unless event_type
+#   puts 'USAGE: nthuevent [org_id]'
+#   exit(1)
+# end
+
+events = NthuEvent::Event.find(type: event_type, page: 1)
+
+unless events.nil?
+  events.first(3).each.with_index(1) do |event, index|
+    print "#{index}: "
+    puts "#{event.title} (#{event.date})"
+    puts event.content
+    puts
+  end
+end
