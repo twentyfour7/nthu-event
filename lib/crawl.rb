@@ -10,6 +10,7 @@ events = doc.css('div.h5').map do |node|
   date = node.css('.date').text.gsub(/[\[\]\s]+/, '')
   event_node = node.css('.ptname a')
   link = URI.join(admin_board_uri, event_node.attr('href').value)
+
   title = event_node.attr('title').value
   content_doc = Nokogiri::HTML(open(link))
   content = content_doc.css('.ptcontent').text.strip
