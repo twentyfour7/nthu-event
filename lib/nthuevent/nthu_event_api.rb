@@ -43,7 +43,9 @@ module NthuEvent
       end
 
       # get total page
-      totalpage = get_pagenum_from_url(doc.css('#navigate a.pagenum').attr('href').value)
+      pagenum_node = doc.css('#navigate a.pagenum')
+      totalpage = 0
+      totalpage = get_pagenum_from_url(pagenum_node.last.attr('href')) unless pagenum_node.nil?
       [events, totalpage]
     end
 
